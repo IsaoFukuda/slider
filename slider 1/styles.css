@@ -1,0 +1,382 @@
+/* Базовые стили  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #455152 0%, #416778 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Основной контейнер */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Обертка слайдера */
+.slider-wrapper {
+    width: 100%;
+    background: rgb(144, 144, 144);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(5, 236, 244, 0.542);
+    position: relative;
+}
+
+/* Индикатор слайда */
+.slide-indicator {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Контейнер слайдера */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 4px solid #e1e5e9;
+    box-shadow: 
+        inset 0 0 25px rgba(0, 0, 0, 0.1),
+        0 15px 40px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: #f8f9fa;
+}
+
+/* Сам слайдер */
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Отдельный слайд */
+.slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Изображение слайда */
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.slide:hover .slide-image {
+    transform: scale(1.05);
+}
+
+/* Контент поверх изображения */
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 30px 20px 20px;
+    text-align: center;
+    z-index: 2;
+}
+
+.slide-title {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-description {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.slide-number {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+/* Контейнер для кнопок управления */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Кнопки слайдера */
+.slider-btn {
+    padding: clamp(12px, 3vw, 16px) clamp(25px, 4vw, 35px);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.slider-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.slider-btn:hover::before {
+    left: 100%;
+}
+
+.prev-btn {
+    background: linear-gradient(135deg, #dd17d3 0%, #ac2121 100%);
+    color: white;
+}
+
+.next-btn {
+    background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
+    color: white;
+}
+
+.slider-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slider-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Контейнер для точек */
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* Стили для точек */
+.dot {
+    width: clamp(10px, 3vw, 14px);
+    height: clamp(10px, 3vw, 14px);
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dot.active {
+    background: #667eea;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.dot:hover {
+    background: #a29bfe;
+    transform: scale(1.1);
+}
+
+/* Индикатор загрузки */
+.slide-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Анимации */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.slider-wrapper {
+    animation: slideIn 0.8s ease-out;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+    .slider-wrapper {
+        padding: 25px;
+        border-radius: 18px;
+    }
+    
+    .slider-container {
+        height: 50vh;
+        min-height: 350px;
+        border-radius: 15px;
+    }
+    
+    .slide-content {
+        padding: 25px 15px 15px;
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .slider-wrapper {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    .slider-container {
+        height: 45vh;
+        min-height: 300px;
+        border-radius: 12px;
+        border-width: 3px;
+    }
+    
+    .slide-content {
+        padding: 20px 10px 10px;
+    }
+    
+    .slider-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .slider-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .slide-indicator {
+        margin-bottom: 20px;
+        padding: 10px 15px;
+    }
+    
+    .dots-container {
+        gap: 10px;
+    }
+}
+
+/* Адаптивность для маленьких мобильных устройств */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .slider-wrapper {
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    .slider-container {
+        height: 40vh;
+        min-height: 250px;
+        border-radius: 10px;
+    }
+    
+    .slide-content {
+        padding: 15px 8px 8px;
+    }
+    
+    .slider-controls {
+        margin-top: 20px;
+    }
+}
+
+/* Поддержка темной темы */
+@media (prefers-color-scheme: dark) {
+    .slider-wrapper {
+        background: #2d3748;
+        color: white;
+    }
+    
+    .slider-container {
+        background: #4a5568;
+        border-color: #718096;
+    }
+    
+    .dot {
+        background: #718096;
+    }
+    
+    .dot.active {
+        background: #667eea;
+    }
+}
+
+/* Улучшения для доступности */
+.slider-btn:focus,
+.dot:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Плавная прокрутка для всех элементов */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Улучшения производительности */
+.slider {
+    will-change: transform;
+}
