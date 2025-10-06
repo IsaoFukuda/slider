@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cлайдер</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slider-wrapper">
+            <!-- Индикатор текущего слайда -->
+            <div class="slide-indicator" id="slideIndicator">
+                Изображение 1 из 5
+            </div>
+            
+            <!-- Контейнер слайдера -->
+            <div class="slider-container">
+                <div class="slider" id="slider">
+                    
+                </div>
+            </div>
+            
+            <!-- Кнопки навигации -->
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" id="prevBtn" aria-label="Предыдущее изображение">
+                     Назад
+                </button>
+                <button class="slider-btn next-btn" id="nextBtn" aria-label="Следующее изображение">
+                    Вперёд 
+                </button>
+            </div>
+
+            <!-- Индикаторы точек -->
+            <div class="dots-container" id="dotsContainer">
+               
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
